@@ -27,4 +27,7 @@ defmodule ExMon do
 
     Status.print_round_message()
   end
+
+  def make_move(move) do
+  end
 end
