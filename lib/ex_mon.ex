@@ -3,7 +3,7 @@ defmodule ExMon do
   Documentation for `ExMon`.
   """
   alias ExMon.{Game, Player}
-  alias ExMon.Game.Status
+  alias ExMon.Game.{Actions, Status}
 
   @computer_name "Robotinick"
 
@@ -29,5 +29,6 @@ defmodule ExMon do
   end
 
   def make_move(move) do
+    Actions.fetch_move(move)
   end
 end
