@@ -8,12 +8,16 @@ defmodule ExMon do
   @computer_name "Robotinick"
 
   @doc """
-  Hello world.
+  Create player.
 
   ## Examples
 
-      iex> ExMon.hello()
-      :world
+      iex> player = ExMon.create_player("Jhoni", :kick, :push, :heal)
+      %ExMon.Player{
+      life: 100,
+      moves: %{move_avg: :push, move_heal: :heal, move_rnd: :kick},
+      name: "Jhoni"
+      }
 
   """
   def create_player(name, move_avg, move_rnd, move_heal) do
@@ -28,6 +32,15 @@ defmodule ExMon do
     Status.print_round_message()
   end
 
+  @doc """
+  Move player.
+
+  ## Examples
+
+      iex> ExMon.make_move :kick
+      11
+
+  """
   def make_move(move) do
     move
     |> Actions.fetch_move()
