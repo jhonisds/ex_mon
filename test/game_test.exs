@@ -107,7 +107,7 @@ defmodule ExMon.GameTest do
     end
   end
 
-  describe "fecth_player/1" do
+  describe "fetch_player/1" do
     test "returns the fetch player" do
     end
   end
