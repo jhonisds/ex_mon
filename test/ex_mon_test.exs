@@ -28,8 +28,36 @@ defmodule ExMonTest do
     end
   end
 
-  describe "make_move/4" do
-    test "returns the fetch player" do
+  describe "make_move/1" do
+    setup do
+      player = ExMon.create_player("Player1", :chute, :soco, :cura)
+
+      capture_io(fn ->
+        ExMon.start_game(player)
+      end)
+
+      :ok
+    end
+
+    test "when the move is valid, do the move and the computer makes a move" do
+      message =
+        capture_io(fn ->
+          ExMon.make_move(:chute)
+        end)
+
+      assert message =~ "The Player attacked the computer dealing"
+      assert message =~ "It's computer turn"
+      assert message =~ "It's player turn"
+      assert message =~ "status: :continue"
+    end
+
+    test "when the move is invalid, returns an error message" do
+      message =
+        capture_io(fn ->
+          ExMon.make_move(:wrong)
+        end)
+
+      assert message =~ "Invalid move: wrong"
     end
   end
 end
