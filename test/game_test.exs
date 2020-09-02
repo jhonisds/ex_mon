@@ -82,4 +82,33 @@ defmodule ExMon.GameTest do
       assert expected == Game.info()
     end
   end
+
+  describe "player/0" do
+    test "returns the current player" do
+      player = Player.build("Player1", :chute, :soco, :cura)
+      computer = Player.build("Computer", :chute, :soco, :cura)
+
+      Game.start(computer, player)
+      expected = player
+
+      assert expected == Map.get(Game.info(), :player)
+    end
+  end
+
+  describe "turn/0" do
+    test "returns the current turn" do
+      player = Player.build("Player1", :chute, :soco, :cura)
+      computer = Player.build("Computer", :chute, :soco, :cura)
+
+      Game.start(computer, player)
+      expected = :player
+
+      assert expected == Map.get(Game.info(), :turn)
+    end
+  end
+
+  describe "fecth_player/1" do
+    test "returns the fetch player" do
+    end
+  end
 end
